@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+
+    <title>Translate Application</title>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+
+{# NavBar #}
+
+<nav class="navbar">
+
+    <a class="navbar-brand" href="/">Customers</a>
+
+</nav>
+
+
+{# Create user form #}
+
+<section>
+
+    <form method="post" action="/create">
+        <div>
+            <label for="First">First Name</label>
+            <input type="text" class="form-control" id="First" name="First" required>
+        </div>
+        <br>
+        <div>
+            <label for="Last">Last Name</label>
+            <input type="text" class="form-control" id="Last" name="Last" required>
+            <br>
+            <small class="form-text text-muted">This is the primary key for the customer. It must be unique.</small>
+        </div>
+        <br>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <br>
+        <div>
+            <label for="Class">Class</label>
+            <select class="form-control" id="Class" name="Class">
+                <option value="z81" selected>z81</option>
+                <option value="z82">z82</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label for="lang">Translation Language</label>
+            <select class="form-control" id="lang" name="lang">
+                <option value="en" selected>English</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="it">Italian</option>
+                <option value="hi">Hindi</option>
+            </select>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+</section>
+
+</body>
+
+</html>

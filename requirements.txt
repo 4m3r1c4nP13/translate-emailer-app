@@ -1,0 +1,9 @@
+Flask>=1.1.1
+google-cloud-datastore
+Google-cloud-translate
+PyYAML>=4.2b1
+python-http-client>=3.2.1
+six==1.11.0
+pytest==3.8.2
+starkbank-ecdsa>=1.0.0
+sendgrid==v6.0.0

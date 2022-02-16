@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <title>CRUD Example - Update Customer</title>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+
+
+{# NavBar #}
+
+<nav class="navbar">
+
+    <a class="navbar-brand" href="/">Customers</a>
+
+    <a href="/create">Add Customer</a>
+
+</nav>
+
+
+{# Update user form #}
+
+<section>
+
+    <form method="post" action="/update/{{ last }}">
+        <div>
+            <label for="First">First Name</label>
+            <input type="text" class="form-control" id="First" name="First" disabled value="{{ first }}">
+        </div>
+        <br>
+        <div>
+            <label for="Last">Last Name</label>
+            <input type="text" class="form-control" id="Last" name="Last" disabled value="{{ last }}">
+            <br>
+            <small class="form-text text-muted">This is the primary key for the customer. It should not be changed.</small>
+        </div>
+        <br>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ email }}">
+        </div>
+        <br>
+        <div>
+            <label for="Class">Class</label>
+            <select class="form-control" id="Class" name="Class">
+                <option value="z81" {% if Class == "z81" %}selected{% endif %}>z81</option>
+                <option value="z82" {% if Class == "z82" %}selected{% endif %}>z82</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label for="lang">Language</label>
+            <select class="form-control" id="lang" name="lang">
+                <option value="en" {% if lang == "en" %}selected{% endif %}>English</option>
+                <option value="es" {% if lang == "es" %}selected{% endif %}>Spanish</option>
+                <option value="fr" {% if lang == "fr" %}selected{% endif %}>French</option>
+                <option value="de" {% if lang == "de" %}selected{% endif %}>German</option>
+                <option value="it" {% if lang == "it" %}selected{% endif %}>Italian</option>
+                <option value="hi" {% if lang == "hi" %}selected{% endif %}>Hindi</option>
+            </select>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</section>
+
+
+
+</body>
+
+</html>

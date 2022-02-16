@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Email Translation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+
+
+{# NavBar #}
+
+<nav class="navbar">
+
+    <a class="navbar-brand" href="/">Customers</a>
+
+    <a href="/create">Add Customer</a>
+
+    <a href="/compose">Compose</a>
+
+</nav>
+
+
+
+{# Customer List #}
+
+<section>
+    <h2>Section Z81</h2>
+    <ul>
+    {# Customer.name is the item in list we display for selection #}
+    {% for student in class1 %}
+        <li><a href="/read/{{ student.Last }}">{{ student.First }} {{ student.Last }}</a></li>
+    {% else %}
+        <li>You have no customers yet. Click <a href="/create">here</a> or "Add Customer" in the navbar to create one.</li>
+    {% endfor %}
+    </ul>
+    <br>
+    <h2>Section Z82</h2>
+    <ul>
+        {# Customer.name is the item in list we display for selection #}
+        {% for student in class2 %}
+            <li><a href="/read/{{ student.Last }}">{{ student.First }} {{ student.Last }}</a></li>
+        {% else %}
+            <li>You have no customers yet. Click <a href="/create">here</a> or "Add Customer" in the navbar to create one.</li>
+        {% endfor %}
+    </ul>
+</section>
+
+
+
+</body>
+
+
+</html>

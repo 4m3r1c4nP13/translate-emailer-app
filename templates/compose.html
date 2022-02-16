@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <title>Compose</title>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/static/style.css">
+
+
+</head>
+
+<body>
+    
+    {# NavBar #}
+
+    <nav class="navbar">
+
+    <a class="navbar-brand" href="/">Customers</a>
+
+    <a href="/create">Add Customer</a>
+
+    <a href="/compose">Compose</a>
+
+    </nav>
+
+    <form action="/compose-message" method="POST">
+        <div>
+            <label for="Class">Class</label>
+            <select class="form-control" id="Class" name="Class">
+                <option value="z81" selected>z81</option>
+                <option value="z82">z82</option>
+            </select>
+        </div>
+        <div>
+            <label for="subject">Subject: </label>
+            <input type="text" name="subject" id="subject" value="{{subject}}">
+        </div>
+        <br>
+        <div>
+            <label for="message">Message: </label>
+            <textarea id="message" name="message" width="30">{{message}}</textarea>
+        </div>
+        <br>
+        <button type="submit">Send Email!</button>
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <title>CRUD Example - Customer</title>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/static/style.css">
+
+    <script src="/static/main.js"></script>
+
+</head>
+
+<body>
+
+ 
+
+ 
+
+{# NavBar #}
+
+<nav class="navbar">
+
+    <a class="navbar-brand" href="/">Customers</a>
+
+    <a href="/create">Add Customer</a>
+
+</nav>
+
+ 
+
+{# Customer Options #}
+
+<section>
+
+    <div class="container">
+
+        <ul>
+            <div>
+                <li><a href="/update/{{ last }}">Update</a></li>
+            </div>
+            <div>
+                <li><a href="/delete/{{ last }}">Delete</a></li>
+            </div>
+        </ul>
+
+    </div>
+
+</section>
+
+ 
+
+{# Customer info #}
+
+<section>
+    First Name: {{ first }} <br>
+    Last Name: {{ last }} <br>
+    Email: {{ email }} <br>
+    Lang: {{ lang }} <br>
+    Class: {{ Class }} <br>
+</section>
+
+
+</body>
+
+</html>
+
+ 
