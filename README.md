@@ -53,13 +53,10 @@ git clone https://github.com/4m3r1c4nP13/translate-emailer-app.git
 ```
 2. Navigate to `Open Editor`
 3. Once entered the `Editor`, on the left menu, navigate to folder `translate-emailer-app`
-4. Open the `main.py` file under `translate-emailer-app`
-5. Scroll to `line 130`, replace the `[SENDGRID KEY]` with the key you copied from the SendGrid Account step
-6. On `line 131`, replace `[SENDGRID EMAIL]` with the email you used to register for Sendgrid. 
-7. Replace `[DISPLAY NAME]` with the name you would like to be displayed on the email
-8. Scroll to `line 185`, replace `[REPLY EMAIL]` with the email that you want to receive replies to
-9. Save all file
-10. Now, go back to the terminal, run the command
+4. Open the `config.py` file under `translate-emailer-app`
+5. Follow the instruction in the `config` file and fill out all required variables.
+6. Save all file
+7. Now, go back to the terminal, run the command
 ```bat
 cd ~/translate-emailer-app/ && gcloud app deploy && gcloud app browse
 ```
