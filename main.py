@@ -1,4 +1,5 @@
 import os
+from config import *
 from datetime import date, datetime
 
 # Import Sendgrid info
@@ -127,8 +128,8 @@ def compose_message():
     return redirect('/')
 
 def sendEmail(data):
-    sg = sendgrid.SendGridAPIClient('[SENDGRID KEY]')
-    from_email = Email('[SENDGRID EMAIL]', '[DISLAY NAME]')
+    sg = sendgrid.SendGridAPIClient(SENDGRID_EMAIL)
+    from_email = Email(SENDGRID_EMAIL, DISPLAY_NAME)
     subject_input = data['subject']
     message_input = data['message']
     now = datetime.now().strftime("%m/%d/%Y, %I:%M %p")
@@ -146,43 +147,46 @@ def sendEmail(data):
         results = list()
 
     for contact in results:
-        lang = contact['lang']
-        langw = "English"
-        if lang == 'en':
-            langw = 'English'
-        elif lang == 'de':
-            langw = "German"
-        elif lang == 'fr':
-            langw = "French"
-        elif lang == 'es':
-            langw = "Spanish"
-        elif lang == 'it':
-            langw = "Italian"
-        elif lang == 'hi':
-            langw = "Hindi"
-        header1 = f"Your assigned language is: {langw}"
-        header2 = "Classroom blog: http://uconnstamfordslp.blogspot.com/"
+        contact_lang = contact['lang']
+        message_lang = "English"
+        if contact_lang == 'en':
+            message_lang = 'English'
+        elif contact_lang == 'de':
+            message_lang = "German"
+        elif contact_lang == 'fr':
+            message_lang = "French"
+        elif contact_lang == 'es':
+            message_lang = "Spanish"
+        elif contact_lang == 'it':
+            message_lang = "Italian"
+        elif contact_lang == 'hi':
+            message_lang = "Hindi"
+        default_message = f"Your assigned language is: {message_lang}"
+        header = HEADER
+        footer = FOOTER
 
-        subject = f"{subject_input}, {now}, {langw}"
+        subject = f"{subject_input}, {now}, {message_lang}"
 
         # Translate subject and message of email
-        subject = translate_client.translate(subject, target_language=lang)['translatedText']
+        subject = translate_client.translate(subject, target_language=contact_lang)['translatedText']
 
-        header1 = translate_client.translate(header1, target_language=lang)['translatedText']
-        header2 = translate_client.translate(header2, target_language=lang)['translatedText']
-        now = translate_client.translate(now, target_language=lang)['translatedText']
-        message_input = translate_client.translate(message_input, target_language=lang)['translatedText']
+        default_message = translate_client.translate(default_message, target_language=contact_lang)['translatedText']
+        header = translate_client.translate(header, target_language=contact_lang)['translatedText']
+        footer = translate_client.translate(footer, target_language=contact_lang)['translatedText']
+        now = translate_client.translate(now, target_language=contact_lang)['translatedText']
+        message_input = translate_client.translate(message_input, target_language=contact_lang)['translatedText']
 
-        message = f"{header1}\n" \
-                  f"{header2}\n" \
+        message = f"{default_message}\n" \
+                  f"{header}\n" \
                   f"\n{now}\n\n" \
-                  f"{message_input}"
+                  f"{message_input}" \
+                  f"\n\n{footer}"
 
         to_email = contact['email']
         content = Content("text/plain", message)
 
         mail = Mail(from_email, to_email, subject, content)
-        mail.reply_to = '[REPLY EMAIL]'
+        mail.reply_to = REPLY_EMAIL
         mail_json = mail.get()
 
         # Send an HTTP POST request to /mail/send
