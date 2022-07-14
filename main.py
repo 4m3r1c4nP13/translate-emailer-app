@@ -128,7 +128,7 @@ def compose_message():
     return redirect('/')
 
 def sendEmail(data):
-    sg = sendgrid.SendGridAPIClient(SENDGRID_EMAIL)
+    sg = sendgrid.SendGridAPIClient(SENDGRID_KEY)
     from_email = Email(SENDGRID_EMAIL, DISPLAY_NAME)
     subject_input = data['subject']
     message_input = data['message']
